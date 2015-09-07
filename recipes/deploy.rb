@@ -27,7 +27,6 @@ node[:deploy].each do |application, deploy|
   end
 
   template "#{deploy[:deploy_to]}/shared/config/database.yml" do
-    cookbook "rails"
     source "database.yml.erb"
     mode 0660
     owner deploy[:user]

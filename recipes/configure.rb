@@ -3,14 +3,6 @@
 include_recipe "deploy"
 include_recipe "opsworks_delayed_job::service"
 
-Chef::Log.info("--------------------------------------AAA")
-
-Chef::Log.debug("--------------------------------------AAA")
-
-Chef::Log.warn("--------------------------------------AAA")
-
-Chef::Log.info("--------------------------------------AAA")
-
 node[:deploy].each do |application, deploy|
   deploy = node[:deploy][application]
   Chef::Log.info("--------------------------------------A")
@@ -18,7 +10,6 @@ node[:deploy].each do |application, deploy|
   Chef::Log.info("--------------------------------------")
   template "#{deploy[:deploy_to]}/shared/config/database.yml" do
     source "database.yml.erb"
-    cookbook 'rails'
     mode "0660"
     group deploy[:group]
     owner deploy[:user]
