@@ -6,7 +6,7 @@
   host: <%= (@database[:host] || 'localhost').to_s.inspect %>
   username: <%= @database[:username].to_s.inspect %>
   password: <%= @database[:password].to_s.inspect %>
-  reconnect: <%= @database[:reconnect] ? 'true' : 'false' %>
+  reconnect: true %>
 <% if @database[:pool] -%>
   pool: <%= @database[:pool].to_i.inspect %>
 <% end -%>
