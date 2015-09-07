@@ -3,9 +3,11 @@
 include_recipe "deploy"
 include_recipe "opsworks_delayed_job::service"
 
+Chef::Log.info("--------------------------------------AAA")
+
 node[:deploy].each do |application, deploy|
   deploy = node[:deploy][application]
-
+  Chef::Log.info("--------------------------------------A")
   node.default[:deploy][application][:database][:adapter] = OpsWorks::RailsConfiguration.determine_database_adapter(application, node[:deploy][application], "#{node[:deploy][application][:deploy_to]}/current", :force => node[:force_database_adapter_detection])
   Chef::Log.info("--------------------------------------")
   template "#{deploy[:deploy_to]}/shared/config/database.yml" do
@@ -22,6 +24,7 @@ node[:deploy].each do |application, deploy|
       File.exists?("#{deploy[:deploy_to]}") && File.exists?("#{deploy[:deploy_to]}/shared/config/")
     end
   end
+  Chef::Log.info("--------------------------------------")
 
   template "#{deploy[:deploy_to]}/shared/config/memcached.yml" do
     source "memcached.yml.erb"
