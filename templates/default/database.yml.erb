@@ -1,17 +1,12 @@
 <% (['development', 'production'] + [@environment]).uniq.each do |env| -%>
 <%= env %>:
-  adapter: <%= @database[:adapter].to_s.inspect %>
-  database: <%= @database[:database].to_s.inspect %>
-  encoding: <%= (@database[:encoding] || 'utf8').to_s.inspect %>
-  host: <%= (@database[:host] || 'localhost').to_s.inspect %>
-  username: <%= @database[:username].to_s.inspect %>
-  password: <%= @database[:password].to_s.inspect %>
+  adapter: mysql2
+  database: <%= ENV['DB_NAME'] %>
+  encoding: utf8
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  pool: <%= ENV['POOL'] %>
   reconnect: true %>
-<% if @database[:pool] -%>
-  pool: <%= @database[:pool].to_i.inspect %>
-<% end -%>
-<% if @database[:port] -%>
-  port: <%= @database[:port].to_i.inspect %>
-<% end -%>
-
 <% end %>
+
