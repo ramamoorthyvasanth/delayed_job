@@ -8,7 +8,8 @@ node[:deploy].each do |application, deploy|
     Chef::Log.debug("Skipping opsworks_delayed_job::deploy application #{application} as it is not an Rails app")
     next
   end
-  Chef::Log.debug("Running custom opsworks recipes")
+  Chef::Log.INFO("Running custom opsworks recipes")
+
   opsworks_deploy_dir do
     user deploy[:user]
     group deploy[:group]
@@ -22,7 +23,6 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
     mode 0770
   end
-
 
   template "#{deploy[:deploy_to]}/shared/config/memcached.yml" do
     cookbook "rails"
