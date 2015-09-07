@@ -1,12 +1,12 @@
 <% (['development', 'production'] + [@environment]).uniq.each do |env| -%>
 <%= env %>:
   adapter: mysql2
-  database: "<%= ENV['DB_NAME'] %>"
+  database: "<%= @database['DB_NAME'] %>"
   encoding: utf8
-  host: <%= ENV['DB_HOST'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  pool: <%= ENV['POOL'] %>
+  host: <%= @database['DB_HOST'] %>
+  username: <%= @database['DB_USERNAME'] %>
+  password: <%= @database['DB_PASSWORD'] %>
+  pool: <%= @database['POOL'] %>
   reconnect: true
 <% end %>
 
