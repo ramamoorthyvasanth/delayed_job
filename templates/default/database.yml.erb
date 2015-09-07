@@ -1,7 +1,7 @@
 <% (['development', 'production'] + [@environment]).uniq.each do |env| -%>
 <%= env %>:
   adapter: mysql2
-  database: "<%= @database['DB_NAME'] %>"
+  database: <%= @database['DB_NAME'] %>
   encoding: utf8
   host: <%= @database['DB_HOST'] %>
   username: <%= @database['DB_USERNAME'] %>
