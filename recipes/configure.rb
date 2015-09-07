@@ -6,7 +6,7 @@ include_recipe "opsworks_delayed_job::service"
 
 Chef::Log.info("---------------------------------------")
 
-Chef::Log.warn("DB_NAME: #{node[:deploy]}")
+Chef::Log.warn("DB_NAME: #{node[:deploy]['nabi_api_delayedjob'][:environment_variables][:DB_NAME]}")
 
 Chef::Log.warn("---------------------------------------")
 
