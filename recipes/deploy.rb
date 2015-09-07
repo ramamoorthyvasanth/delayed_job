@@ -8,7 +8,7 @@ node[:deploy].each do |application, deploy|
     Chef::Log.debug("Skipping opsworks_delayed_job::deploy application #{application} as it is not an Rails app")
     next
   end
-
+  Chef::Log.debug("Running custom opsworks recipes")
   opsworks_deploy_dir do
     user deploy[:user]
     group deploy[:group]
