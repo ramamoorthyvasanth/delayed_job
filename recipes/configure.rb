@@ -3,18 +3,12 @@
 include_recipe "deploy"
 include_recipe "opsworks_delayed_job::service"
 
-
-Chef::Log.info("---------------------------------------")
-
-Chef::Log.warn("DB_NAME: #{node[:deploy]['nabi_api_delayedjob'][:environment_variables][:DB_NAME]}")
-
-Chef::Log.warn("---------------------------------------")
-
 node[:deploy].each do |application, deploy|
   deploy = node[:deploy][application]
-  Chef::Log.info("--------------------------------------A")
   node.default[:deploy][application][:database][:adapter] = OpsWorks::RailsConfiguration.determine_database_adapter(application, node[:deploy][application], "#{node[:deploy][application][:deploy_to]}/current", :force => node[:force_database_adapter_detection])
-  Chef::Log.info("--------------------------------------")
+
+  Chef::Log.warn("ENV VAR: #{deploy[:environment_variables]}")
+
   template "#{deploy[:deploy_to]}/shared/config/database.yml" do
     source "database.yml.erb"
     mode "0660"
