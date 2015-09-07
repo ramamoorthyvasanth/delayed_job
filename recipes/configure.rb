@@ -3,6 +3,8 @@
 include_recipe "deploy"
 include_recipe "opsworks_delayed_job::service"
 
+Chef::Log.info("USER_ID: #{node[:deploy]['nabu_api_delayedjob'][:environment_variables]}"
+
 node[:deploy].each do |application, deploy|
   deploy = node[:deploy][application]
   Chef::Log.info("--------------------------------------A")
