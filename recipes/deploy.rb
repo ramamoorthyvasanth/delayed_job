@@ -17,7 +17,7 @@ node[:deploy].each do |application, deploy|
 
   include_recipe "opsworks_delayed_job::setup"
 
-  file '#{deploy[:deploy_to]}/current/bin/delayed_job' do
+  file "#{deploy[:deploy_to]}/current/bin/delayed_job" do
     owner deploy[:user]
     group deploy[:group]
     mode 0770
