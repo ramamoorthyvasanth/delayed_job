@@ -26,6 +26,15 @@ node[:deploy].each do |application, deploy|
     variables(:memcached => (deploy[:memcached] || {}), :environment => deploy[:rails_env])
   end
 
+  template "#{deploy[:deploy_to]}/shared/config/database.yml" do
+    cookbook "rails"
+    source "database.yml.erb"
+    mode 0660
+    owner deploy[:user]
+    group deploy[:group]
+    variables(:database => (deploy[:database] || {}), :environment => deploy[:rails_env])
+  end
+
   node.set[:opsworks][:rails_stack][:restart_command] = ':'
 
   opsworks_deploy do

@@ -53,16 +53,4 @@ Create a custom layer for the delayed_job instances. Add the `AWS-OpsWorks-Rails
 * **Shutdown**: `opsworks_delayed_job::stop`
 
 
-Changes
----
 
-Defaults have changed with the current release. See the [CHANGELOG](CHANGELOG.md) for details.
-
-
-To Do
------
-
-* Attributes should be better structured (allowing customization without requiring all worker processes to be listed).
-
-
-&copy; 2013-2015 Joey Aghion, Artsy. [MIT License](LICENSE).
