@@ -31,7 +31,7 @@ node[:deploy].each do |application, deploy|
     mode 0660
     owner deploy[:user]
     group deploy[:group]
-    variables(:database => (deploy[:database] || {}), :environment => deploy[:rails_env])
+    variables(:database => (deploy[:environment_variables] || {}), :environment => deploy[:rails_env])
   end
 
   node.set[:opsworks][:rails_stack][:restart_command] = ':'
