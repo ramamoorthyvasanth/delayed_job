@@ -5,6 +5,12 @@ include_recipe "opsworks_delayed_job::service"
 
 Chef::Log.info("--------------------------------------AAA")
 
+Chef::Log.debug("--------------------------------------AAA")
+
+Chef::Log.warn("--------------------------------------AAA")
+
+Chef::Log.info("--------------------------------------AAA")
+
 node[:deploy].each do |application, deploy|
   deploy = node[:deploy][application]
   Chef::Log.info("--------------------------------------A")
