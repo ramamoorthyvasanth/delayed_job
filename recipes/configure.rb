@@ -24,6 +24,12 @@ node[:deploy].each do |application, deploy|
   end
   Chef::Log.info("--------------------------------------")
 
+  file "#{deploy[:deploy_to]}/current/bin/delayed_job" do
+    owner deploy[:user]
+    group deploy[:group]
+    mode 0776
+  end
+
   template "#{deploy[:deploy_to]}/shared/config/memcached.yml" do
     source "memcached.yml.erb"
     cookbook 'rails'

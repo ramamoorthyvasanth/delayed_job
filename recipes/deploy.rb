@@ -21,7 +21,7 @@ node[:deploy].each do |application, deploy|
   file "#{deploy[:deploy_to]}/current/bin/delayed_job" do
     owner deploy[:user]
     group deploy[:group]
-    mode 0770
+    mode 0776
   end
 
   template "#{deploy[:deploy_to]}/shared/config/memcached.yml" do
